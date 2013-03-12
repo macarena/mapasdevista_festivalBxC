@@ -1,0 +1,104 @@
+#post_overlay .entry { width: 260px !important; padding: 10px !important; top: 190px !important; font-family: 'Cabin' !important }
+
+#post_overlay a#close_post_overlay { width: 35px !important; height: 35px !important; right: 315px !important; top: 190px !important; }
+
+div#post_overlay img.wp-post-image { right: 35px; top: 0px; position: absolute; z-index: 1; }
+
+#post_overlay .thumb {
+	display: block;
+	height: 190px;
+	width: 280px;
+	position: absolute;
+	top: 0px;
+	right: 35px;
+	z-index: 1;
+}
+
+p.categoria {
+	font-size: 14px;
+	margin: 0 0 20px;
+}
+
+h1.titulo {
+	font-size: 35px;
+	margin: 10px 0;
+}
+
+p.data, p.hora {
+	margin: 10px 0;
+	font-size: 20px;
+	color: black;
+}
+
+span.data {
+	background-color: white;
+	padding: 0 3px;
+}
+
+span.hora {
+	background-color: #37B12B;
+	padding: 0 3px;
+}
+
+p.localizacao {
+	font-size: 20px;
+}
+
+p.localizacao small {
+	font-size: 14px;
+	color: black;
+	background-color: white;
+	padding: 0 2px;
+}
+
+#entry-content {
+	padding: 0 !important;
+	margin: 20px 0 !important;
+}
+
+#entry-content p {
+	margin: 0;
+}
+
+h2.autor, h2.equipe, h2.equipamento {
+	font-size: 20px;
+	margin: 20px 0 10px;
+}
+
+p.autor {
+	font-size: 14px;
+	margin: 10px 0;
+}
+
+p.equipe, p.equipamento, p.oferta {
+	font-size: 14px;
+	margin: 0;
+}
+
+p.equipe {
+	display: inline-block;
+	height: 30px;
+	border-bottom: 1px solid white;
+	width: 162px;
+}
+
+p.equipe span, p.equipamento span, p.oferta span{
+	font-size: 14px;
+	line-height: 30px;
+}
+
+p.oferta {
+	background-color: #EE615F;
+	display: inline-block;
+	height: 30px;
+	width: 85px;
+	text-align: center;
+}
+
+p.ok {
+	background-color: #39C2D7;
+}
+
+p.primeiro {
+	border-top: 1px solid white;
+}
