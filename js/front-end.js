@@ -1,6 +1,5 @@
 (function($){
     $(document).ready(function() {
-        
         mxn.Marker.prototype._old_openBubble = mxn.Marker.prototype.openBubble;
         
         mxn.Marker.prototype.openBubble = function(){ 
@@ -15,9 +14,6 @@
         $("#toggle-filters").toggle(
             function() {
                 $(this).html("<img src='"+mapinfo.baseurl+"/img/hide-filters.png'/> " + messages.hide_filters);
-                
-                $('.hide_when_show_filters').hide();
-                
                 $(this).parent().animate({
                     "bottom": hWindow/3
                 }, 450);
@@ -28,9 +24,6 @@
             },
             function() {
                 $(this).html("<img src='"+mapinfo.baseurl+"/img/show-filters.png'/> " + messages.show_filters);
-                
-                $('.show_when_hide_filters').hide();
-                
                 $(this).parent().animate({
                     "bottom": "0"
                 }, 450);
@@ -61,12 +54,10 @@
         $("#toggle-results").toggle(
             function() { 
                 $(this).find("img").attr("src",mapinfo.baseurl+"/img/hide-results.png");
-                $('.hide_when_show_results').hide();
                 $("#results").show();
             },
             function() { 
                 $(this).find("img").attr("src",mapinfo.baseurl+"/img/show-results.png");
-                $('.show_when_hide_results').hide();
                 $("#results").hide();
             }
             );
@@ -480,7 +471,7 @@
         
         // results links
         
-        $('.js-filter-by-author-link').live('click', function() {
+        $('.js-filter-by-author-link').click(function() {
         
             var author_id = $(this).attr('id').replace('author-link-', '');
             if (!$('#filter_author_'+author_id).attr('checked'))
@@ -504,26 +495,32 @@
         // Posts overlay
         //$('a.js-link-to-post').each(function() { console.log($(this).attr('id'));});
         
-        $('a.js-link-to-bubble').live('click', function() {
+		// Comentado por Feijão - a chamada fica abaixo
+        /*$('a.js-link-to-bubble').each(function() {
         
-            var id = $(this).attr('id').replace(/[^0-9]+/g, '');
-            var marker = mapasdevista.findMarkerById( id );
-            marker.openBubble();
+            $(this).click(function() {
             
-            if ($('#results').is(':visible')) {
-                $('#toggle-results').click();
-            }
-            return false;
+                var id = $(this).attr('id').replace(/[^0-9]+/g, '');
+                var marker = mapasdevista.findMarkerById( id );
+                marker.openBubble();
+                
+                if ($('#results').is(':visible')) {
+                    $('#toggle-results').click();
+                }
+                return false;
+            
+            });
+        });*/
         
+        $('a.js-link-to-post a.js-link-to-bubble').each(function() {
+        
+            $(this).click(function() {
+                mapasdevista.linkToPost(document.getElementById($(this).attr('id')));
+                return false;
+            
+            });
         });
-        
-        $('a.js-link-to-post').live('click', function() {
-            mapasdevista.linkToPost(document.getElementById($(this).attr('id')));
-            return false;
-        });
-        
         $('li.js-menu-link-to-post').each(function() {
-            
             var el = document.getElementById($(this).attr('id'));
             $(this).find('a').click(function() {
             

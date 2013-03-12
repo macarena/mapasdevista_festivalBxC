@@ -1,12 +1,15 @@
-        <div id="search" class="clearfix">
+        <div id="search_input" class="clearfix">
             <?php mapasdevista_image("icn-search.png", array("id" => "search-icon")); ?>
             <form id="searchform" method="GET">
-                <?php $searchValue = isset($_GET['mapasdevista_search']) && $_GET['mapasdevista_search'] != '' ? $_GET['mapasdevista_search'] : __('Search...', 'mapasdevista'); ?>
-                <input id="searchfield" name="mapasdevista_search" type="text" value="<?php echo $searchValue; ?>" title="<?php _e('Search...', 'mapasdevista'); ?>" />
+                <?php $searchValue = isset($_GET['mapasdevista_search']) && $_GET['mapasdevista_search'] != '' ? $_GET['mapasdevista_search'] : __('Procurar', 'mapasdevista'); ?>
+                <input id="searchfield" name="mapasdevista_search" type="text" value="<?php echo $searchValue; ?>" title="<?php _e('Procurar', 'mapasdevista'); ?>" />
                 <input type="image" src="<?php echo mapasdevista_get_image("submit.png"); ?>"/>
             </form>
+        </div>
+
+        <div id="search" class="clearfix">
             <div id="toggle-filters">
-                <?php mapasdevista_image("show-filters.png"); ?> <?php _e('Show Filters', 'mapasdevista'); ?>
+                <?php mapasdevista_image("show-filters.png"); ?> <?php _e('Categorias', 'mapasdevista'); ?>
             </div>
         </div>
 
@@ -140,8 +143,9 @@
 
                         <?php foreach ($terms as $term): ?>
                             <li>
-                                <input type="checkbox" class="taxonomy-filter-checkbox" value="<?php echo $term->slug; ?>" name="filter_by_<?php echo $taxonomy; ?>[]" id="filter_by_<?php echo $taxonomy; ?>_<?php echo $term->slug; ?>" />
-                                <label for="filter_by_<?php echo $taxonomy; ?>_<?php echo $term->slug; ?>">
+				<label for="filter_by_<?php echo $taxonomy; ?>_<?php echo $term->slug; ?>" class="filter_taxonomy_item">
+                                	<input type="checkbox" class="taxonomy-filter-checkbox" value="<?php echo $term->slug; ?>" name="filter_by_<?php echo $taxonomy; ?>[]" id="filter_by_<?php echo $taxonomy; ?>_<?php echo $term->slug; ?>" />
+                                
                                     <?php echo $term->name; ?>
                                 </label>
                             </li>
@@ -158,7 +162,16 @@
                     }
                 ?>
                 
-                
+<script>
+jQuery(document).ready(function() {
+    jQuery('.filter_taxonomy_item input[type="checkbox"]').click(function() {
+        if (jQuery(this).is(':checked'))
+            jQuery(this).parent().addClass('checked');
+        else
+            jQuery(this).parent().removeClass('checked');
+    });
+});
+</script>
                 
                 
             </div>

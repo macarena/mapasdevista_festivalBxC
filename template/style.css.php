@@ -24,6 +24,13 @@ if(strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE 7') || strpos($_SERVER['HTTP_USER_A
     $themeColor = 'rgb(' . $theme_options['theme_color']['r'] . ',' . $theme_options['theme_color']['g'] . ', ' . $theme_options['theme_color']['b'] . ')';    
 }
 
+//gambi feita pelo macarena
+if($_SERVER["SCRIPT_URL"] == '/festajunina/') {
+	$display_cat = 'display: none;';
+} else {
+	$display_cat = '';
+}
+
 ?>
 
 body {padding: 0px !important; margin: 0px !important;}
@@ -41,13 +48,6 @@ body { min-width:960px; }
 /* Title of the Blog */
 #blog-title     { left:90px; position:fixed; top:6px; max-width:237px; }
 #blog-title img { max-width:237px; }
-
-/* Generic classes to use in your child themes */
-.mapasdevista-background                    {background:<?php echo $bgColor; ?>;}
-.mapasdevista-background-with-hover         {background:<?php echo $bgColor; ?>;}
-.mapasdevista-background-with-hover:hover   {background:<?php echo $themeColor; ?>;}
-.mapasdevista-fontcolor             { color:<?php echo $fontColor; ?>; }
-.mapasdevista-themecolor            { color:<?php echo $themeColor; ?>; }
 
 /* Top Menu */
 .map-menu-top                       { position:fixed; right:124px; top:6px; z-index:10; }
@@ -98,18 +98,14 @@ li.current-menu-item li a:hover     { background:<?php echo $bgColor; ?> !import
 
 /* Results */
 #toggle-results { background:<?php echo $bgColor; ?>; cursor:pointer; padding:4px 4px 0 4px; position:fixed; right:0; top:120px; }
-#results { background:<?php echo $bgColor; ?>; color:<?php echo $fontColor; ?>; display:none; max-height:65%; overflow:auto; padding:9px; position:fixed; right:35px; top:120px; width:30%; }
-#results h1 { font-size:18px; margin-bottom:27px; }
-.result { border-bottom:2px solid rgba(0,0,0,0.5); margin-bottom:27px; }
-.result .pin { float:left; width:60px; }
-.result .pin img { height:auto; max-width:60px; }
-.result .content { margin-left:60px; }
-.result h1 { margin-bottom:3px !important; }
-.result h1 a { color:<?php echo $fontColor; ?>; text-decoration:none; text-transform:uppercase; }
-.result h1 a:hover { text-decoration:underline; }
-.result p.date { background:<?php echo $themeColor; ?>; display:inline-block; font-size:14px; margin-bottom:3px; padding:0 3px; }
-.result p.author a { color:<?php echo $themeColor; ?>; text-decoration:none; }
-.result p.author a:hover { text-decoration:underline; }
+#results { color:<?php echo $fontColor; ?>; overflow:auto; position:fixed; right:2px; text-align:right; top:115px; <?php echo $display_cat; ?>}
+/* linha original editada pelo macarena
+/ #results { color:<?php echo $fontColor; ?>; display:none; max-height:65%; overflow:auto; position:fixed; right:35px; text-align:right; top:120px; width:300px; }
+*/
+#results ul { list-style:none; margin:0; padding:0; }
+#results label { display:block; margin-bottom:1px; }
+#results label img { cursor:pointer; display:block; opacity:0.8; }
+#results label.selected img { opacity:1; }
 
 /* Ballon */
 .balloon            { background:#fff; color:<?php echo $bgColor; ?>; padding:18px; width:270px; }
@@ -142,7 +138,3 @@ a.comment-reply-link { background:<?php echo $themeColor; ?>; color:<?php echo $
 .comment { border-bottom:2px solid <?php echo $bgColor; ?>; padding-bottom:9px; margin-bottom:18px; }
 img.avatar { margin:3px 10px 9px 0px; }
 
-#mapasdevista-gallery-image {max-width: 80%; max-height: 80%; padding:11px; background: <?php echo $bgColor; ?>;}
-
-#mapasdevista-gallery-image #mapasdevista-gallery-close { float:right; cursor:pointer; width:27px; height:27px; background:url(<?php echo mapasdevista_get_baseurl().'/img/close.png'; ?>);}
-#mapasdevista-gallery-image #mapasdevista-gallery-close:hover {background-color: <?php echo $themeColor; ?>}

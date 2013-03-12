@@ -352,3 +352,77 @@ add_filter('the_content', 'mapasdevista_gallery_filter');
 function mapasdevista_gallery_filter($content){
     return str_replace('[gallery]', '[gallery link="file"]', $content);
 }
+
+/*
+
+FUNÇõES ESPECIFICAS DO MAPAS DE VISTA BxC
+
+
+*/
+
+function cl_category_image_url_form($cat) {
+?>
+<tr class="form-field">
+    <th scope="row" valign="top"><label for="cl_color">URL da Imagem</label></th>
+    <td>
+        <input name="cl_image_url" id="cl_color" type="text" value="<?php echo get_option('cl_cat_' . $cat->term_id . '_image_url'); ?>" size="40" /><br />
+        <span class="description">URL da imagem da categoria (ex: "http://www.teste.com/caminho/para/imagem.jpg")</span>
+    </td>
+</tr>
+    <?php
+}
+add_action('edit_category_form_fields', 'cl_category_image_url_form');
+
+
+function cl_category_image_url_save($term_id) {
+    update_option('cl_cat_' . $term_id . '_image_url', $_POST['cl_image_url']);
+}
+add_action('edit_category', 'cl_category_image_url_save');
+
+
+function get_category_image_url($term_id){
+    return get_option('cl_cat_' . $term_id . '_image_url');
+}
+
+
+function mpvf_header($map){
+    $pages = get_posts("post_type=page&numberposts=-1&orderby=title");
+    $nav_menus = wp_get_nav_menus( array('orderby' => 'name') );
+?>
+<h3>Conteúdo do Cabeçalho</h3>
+<div id="header-content-options">
+    <label><input type="radio" name="map[header_content]" value="menu" <?php if($map['header_content'] == 'menu' || !$map['header_content']){ echo ' checked';}?>/> menu</label>
+    <label><input type="radio" name="map[header_content]" value="page" <?php if($map['header_content'] == 'page'){ echo ' checked';}?>/> página</label>
+</div>
+
+<select id="select-header-menu" name="map[header_menu_id]" <?php echo ($map['header_content'] == 'menu' || !$map['header_content']) ? '' : 'style="display:none"';?>>
+    <option value="">Escolha o menu para este mapa</option>
+    <?php foreach($nav_menus as $navmenu): ?>
+    <option value="<?php echo $navmenu->term_id; ?>" <?php if( $navmenu->term_id == $map['header_menu_id']) echo 'selected="selected"'; ?>><?php echo $navmenu->name; ?></option>
+    <?php endforeach; ?>
+</select>
+
+<select id="select-header-pages" name="map[header_page_id]"  <?php echo ($map['header_content'] == 'page') ? '' : 'style="display:none"';?>>
+    <option value="">Escolha a página para este mapa</option>
+    <?php foreach($pages as $page): ?>
+    <option value="<?php echo $page->ID; ?>" <?php if( $page->ID == $map['header_page_id']) echo 'selected="selected"'; ?>><?php echo $page->post_title; ?></option>
+    <?php endforeach; ?>
+</select>
+
+<script type="text/javascript">
+    jQuery("#header-content-options input:radio").click(function(){
+        if(jQuery(this).val() == 'menu'){
+            jQuery("#select-header-menu").show();
+            jQuery("#select-header-pages").hide();
+            jQuery("#select-header-pages").val('');
+        }else{
+            jQuery("#select-header-menu").hide();
+            jQuery("#select-header-pages").show();
+            jQuery("#select-header-menu").val('');
+        }
+            
+    });
+</script>
+<?php
+}
+add_action('mapasdevista_maps_settings_top', 'mpvf_header');

@@ -2,9 +2,6 @@
 <html <?php language_attributes(); ?>>
     <head>
         <meta charset="<?php bloginfo( 'charset' ); ?>" />
-        
-        <meta name="google" value="notranslate"> <!--  this avoids problems with hash change and the google chrome translate bar -->
-        
         <title><?php
             global $page, $paged;
             wp_title( '|', true, 'right' );
@@ -17,6 +14,7 @@
         
         <style type="text/css">
             <?php include( mapasdevista_get_template('template/style.css', null, false) ); ?>
+            
         </style>
         
         <?php wp_head(); ?>
@@ -39,7 +37,16 @@
                 <img src="<?php echo get_theme_option('header_image'); ?>" />
             </a>
         </div>
-        <?php wp_nav_menu( array( 'container_class' => 'map-menu-top', 'theme_location' => 'mapasdevista_top', 'fallback_cb' => false ) ); ?>
+        <?php $map = get_post_meta(get_the_ID(), '_mapasdevista', true);?>
+        <?php if($map["header_content"] == 'menu' && $map["header_menu_id"]): ?>
+            <?php wp_nav_menu( array('menu' => $map["header_menu_id"], 'container_class' => 'map-menu-top', 'theme_location' => 'mapasdevista_top', 'fallback_cb' => false  ) ); ?>
+        <?php elseif($map["header_content"] == 'page' && $map["header_page_id"]): $page = get_page($map["header_page_id"])?>
+            <div style="z-index:1000; position:absolute; top:11px; right:150px;">
+                <?php echo nl2br($page->post_content); ?>
+            </div>
+        <?php else: ?>
+            <?php wp_nav_menu( array( 'container_class' => 'map-menu-top', 'theme_location' => 'mapasdevista_top', 'fallback_cb' => false  ) ); ?>
+        <?php endif; ?>
         
         
         <?php $menu_positions = get_theme_mod('nav_menu_locations'); ?>
@@ -54,7 +61,6 @@
         </div>
         
         <?php wp_nav_menu( array( 'container_class' => 'map-menu-side', 'theme_location' => 'mapasdevista_side', 'fallback_cb' => false ) ); ?>
-        
         
         
         <div id="toggle-results">
