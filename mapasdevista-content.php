@@ -4,7 +4,7 @@
 </section>
 
 <h2 class="autor">Autores</h2>
-<p class="metadata autor"><?php echo $dados[autorxs][0]; ?></p>
+<p class="metadata autor"><?php echo $values[nomResponsavel]; ?></p>
 
 <h2 class="equipe">Equipe</h2>
 
