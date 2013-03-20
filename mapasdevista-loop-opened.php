@@ -16,7 +16,7 @@ $format = get_post_format() ? get_post_format() : 'default';
 
 <?php
 $id = $post->ID;
-$json = file_get_contents("http://199.127.227.146/bxc2013/colab!projetoMapa.action?codProjetoMysql=$id");
+$json = file_get_contents("http://199.127.227.146/bxc2013/colab!projetoMapa.action?codProjetoMysql=90");
 $values = json_decode($json, true);
 $values = $values[values];
 

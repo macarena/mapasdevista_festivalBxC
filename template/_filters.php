@@ -9,7 +9,7 @@
 
         <div id="search" class="clearfix">
             <div id="toggle-filters">
-                <?php mapasdevista_image("show-filters.png"); ?> <?php _e('Categorias', 'mapasdevista'); ?>
+                <?php mapasdevista_image("show-filters.png"); ?>Filtrar por Categorias
             </div>
         </div>
 
@@ -135,7 +135,7 @@
                 ?>
                         <?php if($parent == 0): ?>
                             <?php $tax = get_taxonomy($taxonomy); ?>
-                            <li><h3><?php echo $tax->label; ?></h3></li>
+                            <!--  sem título <li><h3><?php echo $tax->label; ?></h3></li> -->
                         <?php endif; ?>
                         <?php if ($parent > 0): ?>
                             <ul class='children'>

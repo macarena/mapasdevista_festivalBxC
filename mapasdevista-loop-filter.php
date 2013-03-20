@@ -26,9 +26,8 @@ function mapasdevista_taxonomy_checklist_images($taxonomy, $parent = 0) {
     if (!is_array($terms) || ( is_array($terms) && sizeof($terms) < 1 ) )
         return;
 	*/
-	$terms = mycategoryorder_catQuery(0);
+	$terms = mycategoryorder_catQuery(1248);
     ?>
-
 
     <?php foreach ($terms as $term): $image_url = get_category_image_url($term->term_id); if (!$image_url) continue; ?>
         <li>
