@@ -1,0 +1,46 @@
+/*
+CSS para as Consultas
+*/
+
+body
+{
+	line-height: 1.6em;
+}
+
+
+/*
+/* = TABLE
+----------------------------------------------- */
+
+.consulta
+{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	margin: 15px;
+	width: auto;
+	text-align: left;
+	border-collapse: collapse;
+	border: 1px solid #69c;
+}
+.consulta th
+{
+	padding: 15px 10px 10px 10px;
+	font-weight: normal;
+	font-size: 14px;
+	color: #039;
+}
+.consulta tbody
+{
+	background: #e8edff;
+}
+.consulta td
+{
+	padding: 10px;
+	color: #669;
+	border-top: 1px dashed #fff;
+}
+.consulta tbody tr:hover td
+{
+	color: #339;
+	background: #d0dafd;
+}
