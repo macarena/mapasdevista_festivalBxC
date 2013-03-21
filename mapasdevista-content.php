@@ -1,7 +1,7 @@
 <? $dados = get_post_custom(); ?>
 <?php
 $id = $post->ID;
-$json = file_get_contents("http://199.127.227.146/bxc2013/colab!projetoMapa.action?codProjetoMysql=90");
+$json = file_get_contents("http://199.127.227.146/bxc2013/colab!projetoMapa.action?codProjetoMysql=$id");
 $values = json_decode($json, true);
 $values = $values[values];
 
@@ -40,7 +40,7 @@ foreach($values[equipos] as $v) {
 ?>
 <p class="metadata equipe <? echo $i ?>">
 	<span class="demanda"><?php echo $v[nome]; ?> </span>
-</p><p class="oferta"><span class="voluntario"><a href="wp-content/themes/mapasdevista_festivalBxC/colab/form.php?proj_id=<?php echo $post->ID; ?>">emprestar!</a></span></p>
+</p><p class="oferta"><span class="voluntario"><a href="wp-content/themes/mapasdevista_festivalBxC/colab/form.php?proj_id=<?php echo $post->ID; ?>&codEquipo=<?php echo $v[codEquipo]; ?>">emprestar!</a></span></p>
 <?php
 $i = '';
 }
