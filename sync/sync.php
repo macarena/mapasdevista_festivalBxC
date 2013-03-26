@@ -8,7 +8,8 @@ $projetos = $_POST[projetos];
 foreach ($projetos as $projeto) {
 	$id = $projeto[id];
 	$lat = $projeto[lat];
-	$long = $projeto[long];
+	$long = $projeto[lng];
+	if(empty($lat) OR empty($long)) continue;
 	if($projeto[pin] == true) {
 		mysql_query("UPDATE wp_postmeta
 					SET meta_value='a:2:{s:3:\"lat\";d:$lat;s:3:\"lon\";d:$long;}'
