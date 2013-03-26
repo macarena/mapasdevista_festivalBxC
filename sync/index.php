@@ -35,7 +35,7 @@ foreach($projetos as $projeto) {
 	echo "<input type=\"hidden\" name=\"projetos[$id][id]\" value=\"$id\">";
 	echo "<input type=\"hidden\" name=\"projetos[$id][nome]\" value=\"$projeto[post_title]\">";
 	echo "$id - $projeto[post_title] - $lugar<br />\n";
-	echo "Lat: <input type=\"text\" name=\"projetos[$id][lat]\"> - Long: <input type=\"text\" name=\"projetos[$id][long]\"><br />\n";
+	echo "Lat: <input type=\"text\" name=\"projetos[$id][lat]\"> - Long: <input type=\"text\" name=\"projetos[$id][lng]\"><br />\n";
 }
 ?>
  <button type="submit" formaction="sync.php" formmethod="post">Syncar!</button> 
