@@ -9,7 +9,7 @@
 
         <div id="search" class="clearfix">
             <div id="toggle-filters">
-                <?php mapasdevista_image("show-filters.png"); ?>Filtrar por Categorias
+                <?php mapasdevista_image("categorias/seta.png"); ?>
             </div>
         </div>
 
@@ -94,7 +94,7 @@
                     <?php foreach ($mapinfo['taxonomies'] as $filter): ?>
 
                         <ul class="filter-group filter-taxonomy" id="filter_taxonomy_<?php echo $filter; ?>">
-                            <?php mapasdevista_taxonomy_checklist($filter); ?>
+                            <?php mapasdevista_taxonomy_checklist_images($filter); ?>
                         </ul>
 
                         <?php if( ($counter++) % 5 == 0 ): ?>

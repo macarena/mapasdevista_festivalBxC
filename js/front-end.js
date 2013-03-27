@@ -13,7 +13,7 @@
         
         $("#toggle-filters").toggle(
             function() {
-                $(this).html("<img src='"+mapinfo.baseurl+"/img/hide-filters.png'/> " + messages.hide_filters);
+                //$(this).html("<img src='"+mapinfo.baseurl+"/img/hide-filters.png'/> " + messages.hide_filters);
                 $(this).parent().animate({
                     "bottom": hWindow/3
                 }, 450);
@@ -23,7 +23,7 @@
                 
             },
             function() {
-                $(this).html("<img src='"+mapinfo.baseurl+"/img/show-filters.png'/> " + messages.show_filters);
+                //$(this).html("<img src='"+mapinfo.baseurl+"/img/show-filters.png'/> " + messages.show_filters);
                 $(this).parent().animate({
                     "bottom": "0"
                 }, 450);

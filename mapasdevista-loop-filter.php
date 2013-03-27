@@ -26,7 +26,7 @@ function mapasdevista_taxonomy_checklist_images($taxonomy, $parent = 0) {
     if (!is_array($terms) || ( is_array($terms) && sizeof($terms) < 1 ) )
         return;
 	*/
-	$terms = mycategoryorder_catQuery(1248);
+	$terms = mycategoryorder_catQuery($parent);
     ?>
 
     <?php foreach ($terms as $term): $image_url = get_category_image_url($term->term_id); if (!$image_url) continue; ?>
@@ -64,7 +64,7 @@ function mapasdevista_taxonomy_checklist_images($taxonomy, $parent = 0) {
         <?php endif; ?>
 
             <ul class="filter-group filter-taxonomy" id="filter_taxonomy_category">
-                <?php mapasdevista_taxonomy_checklist_images('category'); ?>
+                <?php mapasdevista_taxonomy_checklist_images('category', 1248); ?>
             </ul>
 
 
