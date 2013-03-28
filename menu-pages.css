@@ -1,8 +1,8 @@
 /* CSS para o Menu de Páginas */
 div#menu-pages {
 	position:fixed;
-	left:-1020px;
-	top:65px;
+	left:0;
+	top:286px;
 	font-family: Cabin;
 	font-size:22px;
 }
@@ -10,12 +10,11 @@ div#menu-pages {
 div#menu-pages a {
 	display:block;
 	margin-bottom:2px;
-	width:200px;
 	height:35px;
-	padding:0 0 0 10px;
-	text-decoration:none;
-	color:#fff;
-	background-color:rgba(34,196,252,0.5);
+}
+
+div#menu-pages a#menu-pages-obxc {
+	height: 56px;
 }
 
 div#menu-pages a:hover {
