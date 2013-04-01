@@ -3,14 +3,7 @@
  * configuração do BD
  * ---------------------------------------------------------------------
  *  */
-
-	$db_host = "host.baixocentro.org";
-	$db_username = "baixocentro";
-	$db_password = "ruasparadancar";
-	$db_name = "baixocentro2013_mapa";
-
-?>
-<?php
+include_once 'db.php';
 /*
  * HEAD do HTML
  * ---------------------------------------------------------------------
