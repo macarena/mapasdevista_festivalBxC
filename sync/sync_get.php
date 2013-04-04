@@ -15,6 +15,8 @@ $del_cat = $_GET[del_cat];
 $add_data = $_GET[add_data];
 $del_data = $_GET[del_data];
 $content = $_GET[content];
+$title = $_GET[title];
+$excerpt = $_GET[excerpt];
 $pin = false;
 
 if (!empty($lat) and !empty($lng)) {
@@ -43,13 +45,32 @@ if (!empty($content)) {
 					SET post_content='{$content}'
 					WHERE ID=$id") or die(mysql_error());
 		echo "<p><small>Conteúdo do projeto $id atualizado com sucesso.</p></small>";
-} elseif($_GET[input_content]) {
+}
+if (!empty($title)) {
+	$title= mysql_real_escape_string($title);
+	mysql_query("UPDATE wp_posts
+	SET post_title='{$title}'
+	WHERE ID=$id") or die(mysql_error());
+	echo "<p><small>Título do projeto $id atualizado com sucesso.</p></small>";
+}
+if (!empty($excerpt)) {
+	$excerpt = mysql_real_escape_string($excerpt);
+	mysql_query("UPDATE wp_posts
+	SET post_excerpt='{$excerpt}'
+	WHERE ID=$id") or die(mysql_error());
+	echo "<p><small>Resumo do projeto $id atualizado com sucesso.</p></small>";
+}
+
+if($_GET[input] AND empty($content) AND empty($title) AND empty($excerpt)) {
 	?>
-<form enctype="multipart/form-data">
- <input type='text' name='id' /><br>
- <textarea rows="10" cols="80" name='content'></textarea>
- <button type="submit" formaction="sync_get.php" formmethod="get">Syncar!</button> 
-</form>	 <?php
+	<form enctype="multipart/form-data">
+		ID:<input type='text' name='id' /><br>
+		TITLE:<input type='text' name='title' /><br>
+		EXCERPT:<textarea rows="10" cols="80" name='excerpt'></textarea><br>
+		CONTENT:<textarea rows="10" cols="80" name='content'></textarea>
+		<button type="submit" formaction="sync_get.php" formmethod="get">Syncar!</button> 
+	</form>
+	<?php
 }
 
 /*
