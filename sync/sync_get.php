@@ -8,6 +8,8 @@ $projetos = $_POST[projetos];
 $id = $_GET[id];
 $lat = $_GET[lat];
 $lng = $_GET[lng];
+$cat = $_GET[cat];
+$data = $_GET[data];
 $add_cat = $_GET[add_cat];
 $del_cat = $_GET[del_cat];
 $add_data = $_GET[add_data];
@@ -48,6 +50,72 @@ if (!empty($content)) {
  <textarea rows="10" cols="80" name='content'></textarea>
  <button type="submit" formaction="sync_get.php" formmethod="get">Syncar!</button> 
 </form>	 <?php
+}
+
+/*
+1 Música
+2 Artes integradas
+4 Audiovisual
+5 Teatro
+6 Performance
+7 Letras
+8 Encontros & Passeios
+9 Dança
+10 Conversas, debates, laboratórios
+11 Cultura digital
+12 Oficinas
+ * 
+ * 
+ *
+1236 07/04
+1241 13/04
+1243 sem-data
+1244 06/04
+1245 05/04
+1249 08/04
+1250 09/04
+1251 10/04
+1252 11/04
+1253 12/04
+1254 14/04
+*/
+
+if (!empty($cat)) {
+	mysql_query("DELETE FROM `wp_term_relationships`
+	WHERE `object_id` = $id
+	AND	(`term_taxonomy_id` = 1
+	OR	`term_taxonomy_id` = 2
+	OR	`term_taxonomy_id` = 4
+	OR	`term_taxonomy_id` = 5
+	OR	`term_taxonomy_id` = 6
+	OR	`term_taxonomy_id` = 7
+	OR	`term_taxonomy_id` = 8
+	OR	`term_taxonomy_id` = 9
+	OR	`term_taxonomy_id` = 10
+	OR	`term_taxonomy_id` = 11
+	OR	`term_taxonomy_id` = 12)") or die(mysql_error());
+	mysql_query("INSERT INTO `wp_term_relationships`
+	VALUES ($id, $cat, 0)") or die(mysql_error());
+	echo "<p><small>Projeto $id adicionado a categoria $cat com sucesso.</p></small>";
+}
+
+if (!empty($data)) {
+	mysql_query("DELETE FROM `wp_term_relationships`
+	WHERE `object_id` = $id
+	AND	(`term_taxonomy_id` = 1236
+	OR	`term_taxonomy_id` = 1241
+	OR	`term_taxonomy_id` = 1243
+	OR	`term_taxonomy_id` = 1244
+	OR	`term_taxonomy_id` = 1245
+	OR	`term_taxonomy_id` = 1249
+	OR	`term_taxonomy_id` = 1250
+	OR	`term_taxonomy_id` = 1251
+	OR	`term_taxonomy_id` = 1252
+	OR	`term_taxonomy_id` = 1253
+	OR	`term_taxonomy_id` = 1254)") or die(mysql_error());						
+	mysql_query("INSERT INTO `wp_term_relationships`
+	VALUES ($id, $data, 0)") or die(mysql_error());
+	echo "<p><small>Projeto $id adicionado a categoria $data com sucesso.</p></small>";
 }
 
 if (!empty($add_cat)) {
