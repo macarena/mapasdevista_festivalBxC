@@ -23,14 +23,14 @@ $pin = array();
 $pin[1] = array(1463,1464,1465,1466); //música
 $pin[2] = array(1459,1460,1461,1462); //artes integradas
 $pin[4] = array(1443,1444,1445,1446); //audio visual
-$pin[5] = array(1483); //teatro
+$pin[5] = array(1483,1501,1502,1503); //teatro
 $pin[6] = array(1472,1480,1481,1482); //performance
-$pin[7] = array(); //letras
+$pin[7] = array(1504,1505,1506,1507); //letras
 $pin[8] = array(1455,1456,1457,1458); //encontros & passeios
 $pin[9] = array(1451,1452,1453,1454); //dança
 $pin[10] = array(1447,1448,1449,1450); //conversas, debates, laboratórios
-$pin[11] = array(); //cultura digital
-$pin[12] = array(); //oficinas
+$pin[11] = array(1508,1509,1510,1511); //cultura digital
+$pin[12] = array(1512,1513,1514,1515); //oficinas
 
 foreach($projetos as $projeto) {
 	$id = $projeto[id];
