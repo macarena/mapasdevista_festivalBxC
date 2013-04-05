@@ -17,6 +17,7 @@ $del_data = $_GET[del_data];
 $content = $_GET[content];
 $title = $_GET[title];
 $excerpt = $_GET[excerpt];
+$inativo = $_GET[inativo];
 $pin = false;
 
 if (!empty($lat) and !empty($lng)) {
@@ -37,6 +38,12 @@ if (!empty($lat) and !empty($lng)) {
 				VALUES (NULL, $id, '_mpv_location', 'a:2:{s:3:\"lat\";d:$lat;s:3:\"lon\";d:$l	ng;}')") or die(mysql_error());
 		echo "<p><small>Pin do projeto $id inserido com sucesso.</p></small>";
 	}
+}
+
+if($inativo) {
+	mysql_query("DELETE FROM wp_postmeta
+	WHERE post_id=$id AND (meta_key='_mpv_location' OR meta_key='_mpv_inmap')") or die(mysql_error());
+	echo "<p><small>Projeto $id desativado com sucesso.</p></small>";	
 }
 
 if (!empty($content)) {
