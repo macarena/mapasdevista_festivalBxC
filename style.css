@@ -443,8 +443,8 @@ form.inline p {
 
 /* Misc */
 .box {
-	margin: 18px auto;
-	width: 824px;
+	margin: 18px auto 0;
+	max-width: 1236px;
 }
 
 .alignleft {

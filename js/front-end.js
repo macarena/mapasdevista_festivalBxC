@@ -15,10 +15,10 @@
             function() {
                 //$(this).html("<img src='"+mapinfo.baseurl+"/img/hide-filters.png'/> " + messages.hide_filters);
                 $(this).parent().animate({
-                    "bottom": 130
+                    "bottom": 154
                 }, 450);
                 $("#filters").animate({
-                    height: (130)
+                    height: (154)
                 }, 450);
                 
             },
