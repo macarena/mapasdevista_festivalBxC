@@ -13,7 +13,7 @@ foreach ($projetos as $projeto) {
 	$result = mysql_query("SELECT meta_id FROM `wp_postmeta` WHERE post_id LIKE '$id' AND meta_key LIKE '_mpv_pin'");
 	$row = mysql_num_rows($result);
 	
-	if ($row > 0) $has_pin = true;
+	//if ($row > 0) $has_pin = true;
 	
 	if(empty($pin)) continue;
 	if($has_pin == true) {
