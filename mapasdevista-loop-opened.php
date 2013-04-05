@@ -35,7 +35,7 @@ $values = $values[values];
 	<p class="categoria"><? echo $categoria ?></p>
 	<h1 class="titulo"><?php the_title(); ?></h1>
 	<p class="metadata data hora"><span class="data"><?php echo substr($values[data],0,5); ?></span> <span class="hora"><?php echo $values[hora]; ?></span></p>
-	<p class="localizacao"><?php echo $values[nomLocal];?> <small>como chegar</small></p>
+	<p class="localizacao"><?php echo $values[nomLocal];?> <a href="http://maps.google.com/maps?q=<?php echo str_replace(array('a:2:{s:3:"lat";d:',';s:3:"lon";d:',';}'), array('',',',''), $dados[_mpv_location][0]);?>" target='_blank' style='text-decoration: none;'><small>como chegar</small></a></p>
 
 	<?php mapasdevista_get_template( 'mapasdevista-content' ); ?>
 </div>

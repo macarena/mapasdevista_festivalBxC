@@ -15,6 +15,7 @@ $values = $values[values];
 	<?php echo $values[nomResponsavel]; ?>
 </p>
 
+<!--  NÃO ROLOU ESSA PARTE DE EQUIPoS & Equipe....
 <h2 class="equipe">Equipe</h2>
 
 <?php
@@ -45,6 +46,8 @@ foreach($values[equipos] as $v) {
 $i = '';
 }
 ?>
+
+ -->
 
 <?php
 //plugin para envio de e-mail a cada atualização - Mailing List Subscribers
