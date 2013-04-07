@@ -7,6 +7,11 @@
 	width: 260px !important;
 }
 
+.entry#post_2 {
+	top: 0px !important;
+	height: 600px !important;
+}
+
 #post_overlay a#close_post_overlay {
 	width: 35px !important;
 	height: 35px !important;
